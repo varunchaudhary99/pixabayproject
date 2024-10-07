@@ -19,6 +19,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
 List<UserModel> userData = [];
+// Initial like count
 
 
 
@@ -82,22 +83,44 @@ getData() async {
     if (userData.isNotEmpty) {
     var user = userData[index];
     {
-      return UserTile(context, user);
+      return UserTile(
+          context,
+          user);
     }}})));}
 
   }
-  Widget UserTile (BuildContext context,UserModel user) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-          child: Column(
-          //  crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child:  ClipRRect(
-                  borderRadius: BorderRadius.circular(15), // Optional: Clip the image to avoid overflow
-          child:Image.network(user.userImageURL,fit: BoxFit.fill, width: double.infinity, // Make sure to fill the width
-                height: double.infinity,)))
-            ],
-          )),
-    );
-  }
+
+Widget UserTile(BuildContext context, UserModel user) {
+  return GestureDetector(
+    onTap:(){}, // Increment likes when tapped
+    child: Stack(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: Image.network(
+            user.userImageURL,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: 200,
+          ),
+        ),
+        Positioned(
+          bottom: 10,
+          left: 10,
+          child: Container(
+            color: Colors.black54, // Semi-transparent background
+            padding: EdgeInsets.all(8),
+            child: Row(
+              children: [
+                Text(
+                  'Likes: ${user.likes}', // Display like count
+                  style: TextStyle(color: Colors.white, fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+}

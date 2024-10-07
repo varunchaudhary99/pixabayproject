@@ -40,7 +40,7 @@ class UserModel {
   final int imageSize;
   final int views;
   final int downloads;
-  final int likes;
+   final int likes;
   final int comments;
   final int userId;
   final String user;
