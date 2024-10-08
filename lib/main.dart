@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pixabayproject/screens/home_page.dart';
 
-import 'client/screens/home_page.dart';
+
 
 void main() {
   runApp(const MyApp());
